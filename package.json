@@ -1,0 +1,22 @@
+{
+  "name": "okay",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:maurer2/okay.git",
+  "author": "Martin <mr.mmaurer+work@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start:server": "node ./index.js",
+    "debug:start:server": "ndb node ./index.js",
+    "lint": "node node_modules/.bin/eslint '*.js'"
+  },
+  "dependencies": {
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "express": "^4.16.3",
+    "ndb": "^1.0.25",
+    "webpack": "^4.19.1"
+  }
+}
