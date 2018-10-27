@@ -9,14 +9,18 @@
   "scripts": {
     "start:server": "node ./index.js",
     "debug:start:server": "ndb node ./index.js",
-    "lint": "node node_modules/.bin/eslint '*.js'"
+    "lint": "node node_modules/.bin/eslint '*.js'",
+    "post": "node ./post.js",
+    "post:debug": "ndb node ./post.js"
   },
   "dependencies": {
+    "@slack/client": "^4.8.0",
+    "dotenv": "^6.1.0",
     "eslint": "^5.6.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "express": "^4.16.3",
-    "ndb": "^1.0.25",
+    "ndb": "^1.0.26",
     "webpack": "^4.19.1"
   }
 }
