@@ -1,5 +1,4 @@
 const dotenv = require('dotenv');
-// const ndb = require('ndb');
 const { WebClient } = require('@slack/client');
 
 dotenv.config();

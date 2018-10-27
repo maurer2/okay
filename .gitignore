@@ -63,4 +63,7 @@ typings/
 yarn-error.log
 
 .idea
-.idea/
+.idea/*
+
+.vscode
+.vscode/*

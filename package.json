@@ -10,8 +10,9 @@
     "start:server": "node ./index.js",
     "debug:start:server": "ndb node ./index.js",
     "lint": "node node_modules/.bin/eslint '*.js'",
-    "post": "node ./post.js",
-    "post:debug": "ndb node ./post.js"
+    "post-to-channel": "node ./post-to-channel.js",
+    "post-to-channel:debug": "ndb node ./post-to-channel.js",
+    "get-channels": "node ./get-channels.js"
   },
   "dependencies": {
     "@slack/client": "^4.8.0",
