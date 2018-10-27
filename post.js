@@ -3,16 +3,39 @@ const dotenv = require('dotenv');
 const { WebClient } = require('@slack/client');
 
 dotenv.config();
+
 const token = process.env.SLACK_TOKEN;
-// const channelID = process.env.SLACK_TESTCHANNEL;
+const testchannelID = process.env.SLACK_TESTCHANNEL;
+const languageStrings = {
+  greeting: 'Hallo',
+  affirmation: 'Okay',
+};
 
 const client = new WebClient(token);
-const getTestChannel = client.conversations.list({
+const getTestChannelData = client.conversations.list({
   exclude_archived: true,
   types: 'private_channel',
 });
 
-getTestChannel
+getTestChannelData
   .then(results => (results.ok ? results.channels : []))
-  .then(console.log)
-  .catch(console.error);
+  .then(channels => channels.find(channel => channel.id === testchannelID))
+  .then((channel) => {
+    console.log(channel);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+client.chat.postMessage({
+  channel: testchannelID,
+  text: languageStrings.affirmation,
+})
+  .then((response) => {
+    const messageSent = response.message.text;
+
+    console.log(`'${messageSent}' has been sent!`);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
