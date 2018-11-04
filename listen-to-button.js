@@ -5,6 +5,18 @@ const buttonList = {
   'button-1': process.env.DASH_BUTTON_MAC,
 };
 
-const bl = new ButtonListener(buttonList);
+const listenToButtonClick = () => {
+  const listener = new ButtonListener(buttonList);
 
-bl.startListening();
+  listener.startListening();
+
+  listener.on('button-pressed', (data) => {
+    console.log(`${data} has been pressed!`);
+  });
+};
+
+if (require.main === module) {
+  listenToButtonClick();
+}
+
+module.exports = listenToButtonClick;

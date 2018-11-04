@@ -1,7 +1,10 @@
 const dhcpjs = require('dhcpjs');
+const EventEmitter = require('events');
 
-class ButtonListener {
+class ButtonListener extends EventEmitter{
   constructor(buttonList) {
+    super();
+
     this.buttonList = buttonList;
     this.server = dhcpjs.createServer();
   }
@@ -11,17 +14,18 @@ class ButtonListener {
 
     this.server
       .on('listening', () => {
-        console.log('server has started and is listening');
+        console.log('Server has started listening');
       })
       .on('message', (receivedMessage) => {
-        const macAdress = receivedMessage.chaddr.address;
+        const macAddress = receivedMessage.chaddr.address;
         // const requestType = receivedMessage.op.name;
 
         const buttonPressed = Object.keys(this.buttonList)
-          .find(button => this.buttonList[button] === macAdress);
+          .find(button => this.buttonList[button] === macAddress);
 
         if (buttonPressed.length > 0) {
-          console.log(`${buttonPressed} has been pressed`);
+          // console.log(`${buttonPressed} has been pressed`);
+          this.emit('button-pressed', buttonPressed);
         }
       });
   }
