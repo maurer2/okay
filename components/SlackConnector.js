@@ -22,25 +22,22 @@ class SlackConnector {
   }
 
   getChannelByID(channelID) {
-    this.getChannels().then(results => (results.ok ? results.channels : []))
+    return this.getChannels().then(results => (results.ok ? results.channels : []))
       .then(channels => channels.find(channel => channel.id === channelID))
-      .then((channel) => {
-        console.log(channel);
-      })
       .catch((error) => {
         console.error(error);
       });
   }
 
   postToChannel(channelID) {
-    this.client.chat.postMessage({
+    return this.client.chat.postMessage({
       channel: channelID,
       text: languageStrings.affirmation,
     })
       .then((response) => {
         const messageSent = response.message.text;
 
-        console.log(`'${messageSent}' has been sent!`);
+        return `'${messageSent}' has been sent!`;
       })
       .catch((error) => {
         console.error(error);
