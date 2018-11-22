@@ -10,10 +10,10 @@
     "start:server": "node ./index.js",
     "debug:start:server": "ndb node ./index.js",
     "lint": "node node_modules/.bin/eslint '*.js'",
-    "post-to-channel": "node ./post-to-channel.js",
+    "post-to-channel": "node -r esm ./post-to-channel.js",
     "post-to-channel:debug": "ndb node ./post-to-channel.js",
-    "get-channels": "node ./get-channels.js",
-    "listen-to-button": "sudo node ./listen-to-button.js",
+    "get-channels": "node -r esm ./get-channels.js",
+    "listen-to-button": "sudo node -r esm ./listen-to-button.js",
     "debug:listen-to-button": "sudo ndb node ./listen-to-button.js"
   },
   "dependencies": {
@@ -23,6 +23,7 @@
     "eslint": "^5.6.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "esm": "^3.0.84",
     "express": "^4.16.3",
     "ndb": "^1.0.26",
     "util": "^0.11.1",

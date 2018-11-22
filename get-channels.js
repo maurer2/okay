@@ -1,9 +1,14 @@
-const dotenv = require('dotenv');
-const { WebClient } = require('@slack/client');
+import dotenv from 'dotenv';
+import { WebClient } from '@slack/client';
 
 dotenv.config();
 
 const token = process.env.SLACK_TOKEN;
+
+if (token === undefined) {
+  process.exit(1);
+}
+
 const client = new WebClient(token);
 const getChannels = client.conversations.list({
   exclude_archived: true,

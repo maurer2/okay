@@ -1,5 +1,7 @@
-require('dotenv').config();
-const ButtonListener = require('./ButtonListener');
+import dotenv from 'dotenv';
+import ButtonListener from './ButtonListener';
+
+dotenv.config();
 
 const buttonList = {
   'button-1': process.env.DASH_BUTTON_MAC,
@@ -19,4 +21,4 @@ if (require.main === module) {
   listenToButtonClick();
 }
 
-module.exports = listenToButtonClick;
+export default listenToButtonClick;

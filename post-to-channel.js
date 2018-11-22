@@ -1,10 +1,15 @@
-const dotenv = require('dotenv');
-const { WebClient } = require('@slack/client');
+import dotenv from 'dotenv';
+import { WebClient } from '@slack/client';
 
 dotenv.config();
 
 const token = process.env.SLACK_TOKEN;
 const testchannelID = process.env.SLACK_TESTCHANNEL;
+
+if (token === undefined || testchannelID === undefined) {
+  process.exit(1);
+}
+
 const languageStrings = {
   greeting: 'Hallo',
   affirmation: 'Okay',

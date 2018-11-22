@@ -1,7 +1,7 @@
-const dhcpjs = require('dhcpjs');
-const EventEmitter = require('events');
+import dhcpjs from 'dhcpjs';
+import EventEmitter from 'events';
 
-class ButtonListener extends EventEmitter{
+class ButtonListener extends EventEmitter {
   constructor(buttonList) {
     super();
 
@@ -31,4 +31,4 @@ class ButtonListener extends EventEmitter{
   }
 }
 
-module.exports = ButtonListener;
+export default ButtonListener;
